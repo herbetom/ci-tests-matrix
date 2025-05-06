@@ -1,0 +1,51 @@
+---
+name: "Matrix Tests"
+
+on:
+  pull_request:
+  push:
+
+concurrency:
+  # yamllint disable rule:line-length
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}-${{ github.event.pull_request.number || github.run_id }}
+  # yamllint enable rule:line-length
+  cancel-in-progress: true
+
+jobs:
+
+  prepare:
+    name: Prepare
+    runs-on: ubuntu-22.04
+    steps:
+      - run: echo "Prepare stuff!"
+
+  prepare:
+    name: Prepare
+    runs-on: ubuntu-22.04
+    steps:
+      - run: echo "Prepare stuff!"
+
+  build:
+    needs: [prepare]
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [a, b, c, d]
+    runs-on: ubuntu-22.04
+    steps:
+      - run: echo "Prepare stuff!"
+
+  build-complete:
+    name: All Targets Build
+    runs-on: ubuntu-22.04
+    needs: [build]
+    if: ${{ always() }}
+    steps:
+      - name: Error out if there is a failure
+        if: ${{ needs.build_firmware.result != 'success' }}
+        run: |
+          echo "One or more builds failed."
+          exit 1
+      - name: Proceed if all passed
+        if: ${{ needs.build_firmware.result == 'success' }}
+        run: echo "All required builds succeded!"
