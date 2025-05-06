@@ -29,6 +29,8 @@ jobs:
     steps:
       - run: echo "Buld stuff ${{ matrix.target }}"
       - run: sleep 5
+      - run: |
+        if [ "${{ matrix.target }}" IN ["a"] ]; then exit 1; fi;
       - run: echo "Buld done!"
 
   # Workarround so that there is a single job for the status check
