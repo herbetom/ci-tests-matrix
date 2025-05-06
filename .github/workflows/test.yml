@@ -42,11 +42,11 @@ jobs:
     steps:
       - run: |
           echo "Needs context: ${{ toJson(needs) }}"
-#      - name: Error out because there is a failure
-#        if: ${{ needs.build.result !=  }}
-#        run: |
-#          echo "One or more builds failed."
-#          exit 1
+      - name: Error out because there is a failure
+        if: ${{ needs.build.result != 'success' }}
+        run: |
+          echo "One or more builds failed."
+          exit 1
       - name: Error out because there is a failure
         if: ${{ failure() }}
         run: |
