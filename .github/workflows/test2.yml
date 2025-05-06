@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-22.04
     needs: [prepare]
     steps:
-      - name: Error out on purpose
-        run: exit 2
+#      - name: Error out on purpose
+#        run: exit 2
       - name: All checks succeded
         run: echo "All checks succeded!"
