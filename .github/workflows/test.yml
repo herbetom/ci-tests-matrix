@@ -19,12 +19,6 @@ jobs:
     steps:
       - run: echo "Prepare stuff!"
 
-  prepare:
-    name: Prepare
-    runs-on: ubuntu-22.04
-    steps:
-      - run: echo "Prepare stuff!"
-
   build:
     needs: [prepare]
     strategy:
