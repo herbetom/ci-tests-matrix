@@ -40,7 +40,7 @@ jobs:
     name: All Targets Build
     runs-on: ubuntu-22.04
     needs: [build]
-    if: ${{ !cancelled() }}
+    if: ${{ always() && !cancelled() }}
     steps:
 #      - run: |
 #          echo "Needs context: ${{ toJson(needs) }}"
