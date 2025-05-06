@@ -26,6 +26,6 @@ jobs:
     needs: [prepare]
     steps:
 #      - name: Error out on purpose
-#        run: exit 1
+#        run: exit 2
       - name: All checks succeded
         run: echo "All checks succeded!"
