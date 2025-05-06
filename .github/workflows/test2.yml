@@ -1,5 +1,5 @@
 ---
-name: "Matrix Tests"
+name: "Check Tests"
 
 on:
   pull_request:
