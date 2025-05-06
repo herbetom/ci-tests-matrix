@@ -3,7 +3,7 @@ name: "Check Tests"
 
 on:
   pull_request:
-  push:
+#  push:
 
 concurrency:
   # yamllint disable rule:line-length

@@ -3,7 +3,7 @@ name: "Matrix Tests"
 
 on:
   pull_request:
-  push:
+#  push:
 
 concurrency:
   # yamllint disable rule:line-length
