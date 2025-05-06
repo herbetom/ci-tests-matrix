@@ -40,7 +40,8 @@ jobs:
     needs: [build]
     if: ${{ !cancelled() }}
     steps:
-      - run: echo "Needs context: ${{ toJson(needs) }}"
+      - run: |
+          echo "Needs context: ${{ toJson(needs) }}"
       - name: Error out because there is a failure
         if: ${{ failure() }}
         run: |
