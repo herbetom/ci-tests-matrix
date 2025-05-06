@@ -30,9 +30,7 @@ jobs:
       - run: echo "Buld stuff ${{ matrix.target }}"
       - run: sleep 5
       - run: |
-          if [ "${{ matrix.target }}" == "c" ] ; then exit 1; fi;
-      - run: |
-          if [ "${{ matrix.target }}" == "b" ] ; then exit 1; fi;
+          if [ "${{ matrix.target }}" == "9" ] ; then exit 1; fi;
       - run: echo "Buld done!"
 
   # Workarround so that there is a single job for the status check
