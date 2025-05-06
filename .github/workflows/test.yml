@@ -47,10 +47,5 @@ jobs:
         run: |
           echo "One or more builds failed."
           exit 1
-      - name: Error out because there is a failure
-        if: ${{ failure() }}
-        run: |
-          echo "One or more builds failed."
-          exit 1
-      - name: Error out because there is a failure
+      - name: All firmware builds succeded
         run: echo "All firmware builds succeded!"
