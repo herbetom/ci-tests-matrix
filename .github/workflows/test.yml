@@ -3,7 +3,9 @@ name: "Matrix Tests"
 
 on:
   pull_request:
-  push:
+    paths-ignore:
+      - '.github/workflows/test2.yml'
+#  push:
 
 concurrency:
   # yamllint disable rule:line-length
@@ -30,7 +32,7 @@ jobs:
       - run: echo "Buld stuff ${{ matrix.target }}"
       - run: sleep 5
       - run: |
-          if [ "${{ matrix.target }}" == "0" ] ; then exit 1; fi;
+          if [ "${{ matrix.target }}" == "9" ] ; then exit 1; fi;
       - run: echo "Buld done!"
 
   # Workarround so that there is a single job for the status check
@@ -40,17 +42,12 @@ jobs:
     needs: [build]
     if: ${{ !cancelled() }}
     steps:
-      - run: |
-          echo "Needs context: ${{ toJson(needs) }}"
+#      - run: |
+#          echo "Needs context: ${{ toJson(needs) }}"
       - name: Error out because there is a failure
         if: ${{ needs.build.result != 'success' }}
         run: |
-          echo "One or more builds failed."
+          echo "Build Matrix Result: ${{ needs.build.result }}"
           exit 1
-      - name: Error out because there is a failure
-        if: ${{ failure() }}
-        run: |
-          echo "One or more builds failed."
-          exit 1
-      - name: Error out because there is a failure
+      - name: All firmware builds succeded
         run: echo "All firmware builds succeded!"
